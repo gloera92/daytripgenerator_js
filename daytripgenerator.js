@@ -3,7 +3,7 @@
 let destination = ['California', 'Arkansas', 'Las Vegas'];
 let restaurant = ['Italian', 'Steak House', 'Korean BBQ'];
 let transportation = ['Train', 'Car', 'Air Plane'];
-let entertainment = ['Concert', 'Movie', 'Picnic'];
+let entertainment = ['Concert', 'Movie', 'Amusement Park'];
 
 function randomTripGen (array) {
 
@@ -14,18 +14,19 @@ function randomTripGen (array) {
     
 let randomDestination = randomTripGen(destination);         //prints random destination
 
-let destinationResult = alert(`${randomDestination} your random destination`);          //alerts user the option for a random destination
+let randomRestaurant = randomTripGen(restaurant);           //prints random restaurant
+console.log(randomRestaurant);
 
-let destinationChoice = prompt(`Was ${randomDestination} a good selection?`);           //allows the user to pick is the destination is suitable
+let randomTravelType = randomTripGen(transportation);       //prints random transportation
+console.log(randomTravelType);
 
-console.log(randomDestination);
+let randomEntertainment = randomTripGen(entertainment);         //prints random entertainment
+console.log(randomEntertainment);
 
-let RandomRestaurant = randomTripGen(restaurant);           //prints random restaurant
-console.log(RandomRestaurant);
 
-let RandomTravelType = randomTripGen(transportation);       //prints random transportation
-console.log(RandomTravelType);
+let destinationResult = alert(`This will be your randomized trip!  ${randomDestination} is your destination, ${randomRestaurant} is a good spot for food, ${randomTravelType} is how you will travel, and ${randomEntertainment} is your entertainment!`);          //alerts user his randomized trip
 
-let RandomEntertainment = randomTripGen(entertainment);         //prints random entertainment
-console.log(RandomEntertainment);
+//let destinationChoice = prompt(`Was ${randomDestination} a good selection?`);           //allows the user to pick is the destination is suitable
+
+
 
