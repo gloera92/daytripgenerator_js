@@ -24,36 +24,72 @@ let randomEntertainment = randomTripGen(entertainment);     //prints random ente
 
 let destinationResult = prompt(`Here is your randomized trip!  ${randomDestination} is your destination, ${randomRestaurant} is a good spot for food, ${randomTravelType} is how you will travel, and ${randomEntertainment} is your entertainment!  Will you be taking this trip?`);  // alerts user his randomized trip
 
-
-if(destinationResult === "no") {  //if user chooses no, it will propt them to pick the part of the trip they wish to choose.
-    let changeDestinationResult = prompt("Which part of your trip would you like to change? (1) Destination, (2) Restaurant, (3) Transportation, or (4) Entertainment?")
-    changeDestinationResult === travelTypeChange(userInput[changeDestinationResult])
-    
-}
-
-
 function travelTypeChange (userInput) {  //takes the result from changeDestinationResult and uses the yesOrNo function to give random part of trip the user wishes to switch.
     if(userInput === "1"){
-        yesOrNo(destination)
+        
+       randomDestination = yesOrNo(destination,destination);
+        
     }
     else if (userInput === "2") {
-        yesOrNo(restaurant)
+        
+        randomRestaurant = yesOrNo(restaurant,restaurant);
     }
     else if (userInput === "3") {
-        yesOrNo(transportation)
+        
+        randomTravelType = yesOrNo(transportation, transportation);
     }
     else if (userInput === "4") {
-        yesOrNo(entertainment)
+        
+        randomEntertainment = yesOrNo(entertainment,entertainment);
     }
 }
 
+  function yesOrNo (selection,array) {            //re-randomizes until user is satisifed with trip changes.
+      let newSelection = randomTripGen(selection);
+      let i = prompt(` ${newSelection} a better selection?`);
+    if(i === "yes"){
+        return newSelection;
+    }
+     else if(i === "no"){
+          for(let j = 0; j != "yes"; j++) {
+        let newSelection = randomTripGen(array);       
+       let userInput = prompt(` ${newSelection} a better selection?`);
+       if(userInput === "yes") {
+           return newSelection;
+       }
+    }
 
-function yesOrNo (selection) {
-   let i = prompt(` ${randomTripGen(selection)} a better selection?`);
-   if(i === "no"){
-       return i;
-   }
-   else {
-       return;
-   }
 }
+}
+
+if(destinationResult === "no") {  //if user chooses no, it will propt them to pick the part of the trip they wish to choose.
+    let changeDestinationResult = prompt("Which part of your trip would you like to change? (1) Destination, (2) Restaurant, (3) Transportation, or (4) Entertainment?") //asks user which part of trip they would like to randomize
+    changeDestinationResult === travelTypeChange(userInput[changeDestinationResult])  
+    let changedResult = (prompt(`Here is your new trip. ${randomDestination} is your destination, ${randomRestaurant} is a good spot for food, ${randomTravelType} is how you will travel, and ${randomEntertainment} is your entertainment!  Will you be taking this trip?`));
+
+
+    while(changedResult === "no") {  //while changed result stays "no", code will loop until user is satisfied with change.
+        let changeDestinationResult = prompt("Which part of your trip would you like to change? (1) Destination, (2) Restaurant, (3) Transportation, or (4) Entertainment?")
+        changeDestinationResult === travelTypeChange(userInput[changeDestinationResult])
+        changedResult = (prompt(`Here is your new trip. ${randomDestination} is your destination, ${randomRestaurant} is a good spot for food, ${randomTravelType} is how you will travel, and ${randomEntertainment} is your entertainment!  Will you be taking this trip?`));
+    }
+    
+    if(changedResult === "yes"){     //alerts when user has finally confirmed their trip.
+        console.log("Your randomized trip is now complete!")
+        alert("Enjoy your trip!")
+    } 
+}
+else if (destinationResult === "yes") {
+    console.log("Your randomized trip is now complete!")
+    alert("Enjoy your trip!") 
+}
+
+
+
+
+
+
+   
+
+
+
