@@ -1,9 +1,11 @@
 "use strict"
 
+//Array list of random types for trip
 let destination = ['California', 'Arkansas', 'Colorado', 'Las Vegas'];
 let restaurant = ['Italian', 'Steak House', 'Korean BBQ', 'Pizza'];
 let transportation = ['Train', 'Car', 'Air Plane', 'Helicopter'];
 let entertainment = ['Concert', 'Movie', 'Amusement Park', 'Beach'];
+let userInput = ['0','1', '2', '3', '4']
 
 function randomTripGen (array) {
 
@@ -22,75 +24,36 @@ let randomEntertainment = randomTripGen(entertainment);     //prints random ente
 
 let destinationResult = prompt(`Here is your randomized trip!  ${randomDestination} is your destination, ${randomRestaurant} is a good spot for food, ${randomTravelType} is how you will travel, and ${randomEntertainment} is your entertainment!  Will you be taking this trip?`);  // alerts user his randomized trip
 
-//let destinationChoice = prompt(`Was ${destinationResult} a good selection?`);           //allows the user to pick if the destination is suitable.
 
-// function otherSelection (selection) {
-//     let j = prompt(`Is ${selection[i]} a good choice?`)
-//    for(let i = 0; i < selection.length; i++) 
-   
-//     if(j != "yes") 
-//         j
+if(destinationResult === "no") {  //if user chooses no, it will propt them to pick the part of the trip they wish to choose.
+    let changeDestinationResult = prompt("Which part of your trip would you like to change? (1) Destination, (2) Restaurant, (3) Transportation, or (4) Entertainment?")
+    changeDestinationResult === travelTypeChange(userInput[changeDestinationResult])
     
-//     else { 
-//         return;
-//     }
-
-
-if(destinationResult === "yes"|| destinationResult === "Yes") {      //if user chooses yes, it will enter console log.  if user chooses no it will ask them which part of trip they want to change.
-    console.log("Have a great trip!")
 }
-else {
-    let chooseAnotherType = prompt(`Which part of the trip would you like to change?  (1) Destination,         (2) Restaurant, (3) Transportation, or (4) Entertainment?`);
-    chooseAnotherType
 
-switch(chooseAnotherType) {       //if user choose 1-4, it will select which part of trip they wanna change an re-roll that part of the trip.
-    case "1":
 
-    otherSelection(destination)
-
-    break;
-
-    case "2":
-
-    otherSelection(restaurant)
-
-    break;
-
-    case "3":
-
-    otherSelection(transportation)
-
-    break;
-
-    case "4": 
-
-    otherSelection(entertainment)
-
-    break;
-
-    default:
-        console.log("try again")
-
-        }
+function travelTypeChange (userInput) {  //takes the result from changeDestinationResult and uses the yesOrNo function to give random part of trip the user wishes to switch.
+    if(userInput === "1"){
+        yesOrNo(destination)
     }
+    else if (userInput === "2") {
+        yesOrNo(restaurant)
+    }
+    else if (userInput === "3") {
+        yesOrNo(transportation)
+    }
+    else if (userInput === "4") {
+        yesOrNo(entertainment)
+    }
+}
 
 
-
-// if(destinationResult === "1" ) {
-//     chooseArray(desination);
-
-
-// }
-// else if(destinationResult === "2") {
-//     chooseArray(restaurant)
-// }
-// else if(destinationResult === 3) {
-//     chooseArray(transportation)
-// }
-// else if(destinationResult === entertainment) {
-//     chooseArray(entertainment)
-// }
-// else {
-//     console.log("have a good trip")
-// }
-// }
+function yesOrNo (selection) {
+   let i = prompt(` ${randomTripGen(selection)} a better selection?`);
+   if(i === "no"){
+       return i;
+   }
+   else {
+       return;
+   }
+}
